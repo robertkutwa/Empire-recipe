@@ -5,11 +5,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 
   --background: hsl(0 0% 100%);
   --foreground: hsl(222.2 84% 4.9%);
@@ -20,8 +22,8 @@
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(222.2 84% 4.9%);
 
-  --primary: hsl(222.2 47.4% 11.2%);
-  --primary-foreground: hsl(210 40% 98%);
+  --primary: hsl(24 100% 50%);
+  --primary-foreground: hsl(0 0% 100%);
 
   --secondary: hsl(210 40% 96.1%);
   --secondary-foreground: hsl(222.2 47.4% 11.2%);
@@ -39,26 +41,98 @@
   --input: hsl(214.3 31.8% 91.4%);
   --ring: hsl(222.2 84% 4.9%);
 
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 
   --sidebar-background: hsl(0 0% 98%);
-
   --sidebar-foreground: hsl(240 5.3% 26.1%);
-
   --sidebar-primary: hsl(240 5.9% 10%);
-
   --sidebar-primary-foreground: hsl(0 0% 98%);
-
   --sidebar-accent: hsl(240 4.8% 95.9%);
-
   --sidebar-accent-foreground: hsl(240 5.9% 10%);
-
   --sidebar-border: hsl(220 13% 91%);
-
   --sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+  /* Recipe app specific colors */
+  --recipe-card: hsl(0 0% 100%);
+  --recipe-card-hover: hsl(0 0% 98%);
+  --recipe-difficulty-easy: hsl(120 100% 30%);
+  --recipe-difficulty-medium: hsl(45 100% 45%);
+  --recipe-difficulty-hard: hsl(0 100% 50%);
+}
+
+.dark {
+  --background: hsl(222.2 84% 4.9%);
+  --foreground: hsl(210 40% 98%);
+
+  --card: hsl(222.2 84% 4.9%);
+  --card-foreground: hsl(210 40% 98%);
+
+  --popover: hsl(222.2 84% 4.9%);
+  --popover-foreground: hsl(210 40% 98%);
+
+  --primary: hsl(24 100% 50%);
+  --primary-foreground: hsl(0 0% 100%);
+
+  --secondary: hsl(217.2 32.6% 17.5%);
+  --secondary-foreground: hsl(210 40% 98%);
+
+  --muted: hsl(217.2 32.6% 17.5%);
+  --muted-foreground: hsl(215 20.2% 65.1%);
+
+  --accent: hsl(217.2 32.6% 17.5%);
+  --accent-foreground: hsl(210 40% 98%);
+
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(210 40% 98%);
+
+  --border: hsl(217.2 32.6% 17.5%);
+  --input: hsl(217.2 32.6% 17.5%);
+  --ring: hsl(212.7 26.8% 83.9%);
+
+  --sidebar-background: hsl(220 13% 18%);
+  --sidebar-foreground: hsl(220 9% 46%);
+  --sidebar-primary: hsl(224 71% 4%);
+  --sidebar-primary-foreground: hsl(210 20% 98%);
+  --sidebar-accent: hsl(215 25% 27%);
+  --sidebar-accent-foreground: hsl(210 20% 98%);
+  --sidebar-border: hsl(215 28% 17%);
+  --sidebar-ring: hsl(216 12% 84%);
+
+  /* Recipe app specific colors for dark mode */
+  --recipe-card: hsl(217.2 32.6% 17.5%);
+  --recipe-card-hover: hsl(217.2 32.6% 20%);
+  --recipe-difficulty-easy: hsl(120 100% 40%);
+  --recipe-difficulty-medium: hsl(45 100% 55%);
+  --recipe-difficulty-hard: hsl(0 100% 60%);
 }
 
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
+}
+
+/* Custom utilities for recipe app */
+.recipe-card {
+  background: hsl(var(--recipe-card));
+  transition: background-color 0.2s ease;
+}
+
+.recipe-card:hover {
+  background: hsl(var(--recipe-card-hover));
+}
+
+.difficulty-badge {
+  @apply px-2 py-1 rounded-full text-xs font-medium text-white;
+}
+
+.difficulty-easy {
+  background: hsl(var(--recipe-difficulty-easy));
+}
+
+.difficulty-medium {
+  background: hsl(var(--recipe-difficulty-medium));
+}
+
+.difficulty-hard {
+  background: hsl(var(--recipe-difficulty-hard));
 }
