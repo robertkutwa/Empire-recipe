@@ -1,6 +1,7 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 import { ChefHat } from "lucide-react";
+import Landing from "./Landing";
 
 export default function Index() {
   const { user, loading } = useAuth();
@@ -21,6 +22,6 @@ export default function Index() {
     return <Navigate to="/recipes" replace />;
   }
 
-  // Redirect unauthenticated users to login
-  return <Navigate to="/login" replace />;
+  // Show landing page for non-authenticated users
+  return <Landing />;
 }

@@ -6,6 +6,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthGuard } from "@/components/AuthGuard";
+import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Recipes from "./pages/Recipes";
@@ -26,27 +27,18 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Routes>
+              {/* Home route */}
+              <Route path="/" element={<Index />} />
+
               {/* Public routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
 
+              {/* Public recipe routes */}
+              <Route path="/recipes" element={<Recipes />} />
+              <Route path="/recipes/:id" element={<RecipeDetail />} />
+
               {/* Protected routes */}
-              <Route
-                path="/recipes"
-                element={
-                  <AuthGuard>
-                    <Recipes />
-                  </AuthGuard>
-                }
-              />
-              <Route
-                path="/recipes/:id"
-                element={
-                  <AuthGuard>
-                    <RecipeDetail />
-                  </AuthGuard>
-                }
-              />
               <Route
                 path="/add-recipe"
                 element={
@@ -71,9 +63,6 @@ const App = () => (
                   </AuthGuard>
                 }
               />
-
-              {/* Redirect root to recipes */}
-              <Route path="/" element={<Navigate to="/recipes" replace />} />
 
               {/* Catch all */}
               <Route path="*" element={<NotFound />} />

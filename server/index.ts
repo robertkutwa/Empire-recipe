@@ -48,9 +48,9 @@ export function createServer() {
   app.get("/api/auth/me", handleGetMe);
   app.post("/api/auth/logout", handleLogout);
 
-  // Recipe routes (protected)
-  app.get("/api/recipes", authenticateUser, handleGetRecipes);
-  app.get("/api/recipes/:id", authenticateUser, handleGetRecipe);
+  // Recipe routes (public for viewing)
+  app.get("/api/recipes", handleGetRecipes);
+  app.get("/api/recipes/:id", handleGetRecipe);
   app.post("/api/recipes", authenticateUser, handleCreateRecipe);
   app.put("/api/recipes/:id", authenticateUser, handleUpdateRecipe);
   app.delete("/api/recipes/:id", authenticateUser, handleDeleteRecipe);

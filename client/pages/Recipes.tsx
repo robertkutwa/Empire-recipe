@@ -54,10 +54,13 @@ export default function Recipes() {
   const fetchRecipes = async () => {
     try {
       const token = localStorage.getItem("auth-token");
+      const headers: Record<string, string> = {};
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       const response = await fetch("/api/recipes", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers,
       });
 
       if (response.ok) {
@@ -74,8 +77,10 @@ export default function Recipes() {
   };
 
   const fetchUserInteractions = async () => {
+    const token = localStorage.getItem("auth-token");
+    if (!token) return; // Skip if not authenticated
+
     try {
-      const token = localStorage.getItem("auth-token");
       const response = await fetch("/api/users/interactions", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -152,8 +157,13 @@ export default function Recipes() {
   };
 
   const handleToggleFavorite = async (recipeId: string) => {
+    const token = localStorage.getItem("auth-token");
+    if (!token) {
+      toast.error("Please sign in to add favorites");
+      return;
+    }
+
     try {
-      const token = localStorage.getItem("auth-token");
       const isFavorited = userInteractions.favorites.includes(recipeId);
 
       const response = await fetch(`/api/recipes/${recipeId}/favorite`, {
@@ -182,8 +192,13 @@ export default function Recipes() {
   };
 
   const handleToggleWantToTry = async (recipeId: string) => {
+    const token = localStorage.getItem("auth-token");
+    if (!token) {
+      toast.error("Please sign in to add to want to try list");
+      return;
+    }
+
     try {
-      const token = localStorage.getItem("auth-token");
       const isWantToTry = userInteractions.wantToTry.includes(recipeId);
 
       const response = await fetch(`/api/recipes/${recipeId}/want-to-try`, {
