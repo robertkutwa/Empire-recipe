@@ -1,8 +1,10 @@
 import { RequestHandler } from "express";
 import { LoginRequest, SignupRequest, AuthResponse, User } from "@shared/types";
 
+import { sampleUsers } from "../data/sampleData";
+
 // Mock database - In a real app, you'd use a proper database
-const users: User[] = [];
+const users: User[] = [...sampleUsers]; // Initialize with sample data
 const userSessions: { [token: string]: string } = {}; // token -> userId
 
 // Helper function to generate simple token

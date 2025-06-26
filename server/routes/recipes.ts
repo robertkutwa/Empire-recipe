@@ -5,9 +5,10 @@ import {
   UserRecipeInteraction,
 } from "@shared/types";
 import { getUsers } from "./auth";
+import { sampleRecipes } from "../data/sampleData";
 
 // Mock database - In a real app, you'd use a proper database
-const recipes: Recipe[] = [];
+const recipes: Recipe[] = [...sampleRecipes]; // Initialize with sample data
 const userRecipeInteractions: UserRecipeInteraction[] = [];
 
 // Helper function to find recipe by id

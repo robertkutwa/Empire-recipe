@@ -9,6 +9,7 @@ import { AuthGuard } from "@/components/AuthGuard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Recipes from "./pages/Recipes";
+import RecipeDetail from "./pages/RecipeDetail";
 import AddRecipe from "./pages/AddRecipe";
 import WantToTry from "./pages/WantToTry";
 import Profile from "./pages/Profile";
@@ -35,6 +36,14 @@ const App = () => (
                 element={
                   <AuthGuard>
                     <Recipes />
+                  </AuthGuard>
+                }
+              />
+              <Route
+                path="/recipes/:id"
+                element={
+                  <AuthGuard>
+                    <RecipeDetail />
                   </AuthGuard>
                 }
               />
