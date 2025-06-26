@@ -1,61 +1,26 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Navigate } from "react-router-dom";
+import { ChefHat } from "lucide-react";
 
 export default function Index() {
-  const [messageFromServer, setMessageFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchHello();
-  }, []);
+  const { user, loading } = useAuth();
 
-  const fetchHello = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setMessageFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 text-slate-600 max-w-md">{messageFromServer}</p>
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-amber-50 dark:from-gray-900 dark:to-gray-800">
+        <div className="text-center">
+          <ChefHat className="h-12 w-12 text-primary mx-auto mb-4 animate-pulse" />
+          <p className="text-muted-foreground">Loading RecipeShare...</p>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  // Redirect authenticated users to recipes page
+  if (user) {
+    return <Navigate to="/recipes" replace />;
+  }
+
+  // Redirect unauthenticated users to login
+  return <Navigate to="/login" replace />;
 }
