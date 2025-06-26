@@ -104,6 +104,30 @@ export const handleLogin: RequestHandler = (req, res) => {
   }
 };
 
+export const handleDemoLogin: RequestHandler = (req, res) => {
+  try {
+    // Find demo user
+    const demoUser = findUserByEmail("demo@recipeShare.com");
+    if (!demoUser) {
+      return res.status(500).json({ message: "Demo user not found" });
+    }
+
+    // Generate token
+    const token = generateToken();
+    userSessions[token] = demoUser.id;
+
+    const response: AuthResponse = {
+      user: demoUser,
+      token,
+    };
+
+    res.json(response);
+  } catch (error) {
+    console.error("Demo login error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const handleGetMe: RequestHandler = (req, res) => {
   try {
     const authHeader = req.headers.authorization;

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useAuth } from "@/contexts/AuthContext";
-import { ChefHat, Eye, EyeOff } from "lucide-react";
+import { ChefHat, Eye, EyeOff, Zap } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -21,7 +21,8 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const [demoLoading, setDemoLoading] = useState(false);
+  const { login, demoLogin } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,6 +37,20 @@ export default function Login() {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDemoLogin = async () => {
+    setError("");
+    setDemoLoading(true);
+
+    try {
+      await demoLogin();
+      navigate("/recipes");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Demo login failed");
+    } finally {
+      setDemoLoading(false);
     }
   };
 
@@ -105,10 +120,33 @@ export default function Login() {
             <Button
               type="submit"
               className="w-full"
-              disabled={loading || !email || !password}
+              disabled={loading || demoLoading || !email || !password}
             >
               {loading ? "Signing in..." : "Sign In"}
             </Button>
+
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or try the demo
+                </span>
+              </div>
+            </div>
+
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full"
+              onClick={handleDemoLogin}
+              disabled={loading || demoLoading}
+            >
+              <Zap className="h-4 w-4 mr-2" />
+              {demoLoading ? "Loading demo..." : "Try Demo Account"}
+            </Button>
+
             <p className="text-sm text-center text-muted-foreground">
               Don't have an account?{" "}
               <Link

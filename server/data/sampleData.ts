@@ -2,6 +2,17 @@ import { Recipe, User } from "@shared/types";
 
 export const sampleUsers: User[] = [
   {
+    id: "demo-user",
+    email: "demo@recipeShare.com",
+    name: "Demo User",
+    dateOfBirth: "1990-06-15",
+    location: "San Francisco, CA",
+    bio: "Welcome to RecipeShare! I'm a demo account showcasing all the features of this amazing recipe sharing platform. Feel free to explore my recipes, favorites, and profile. I love cooking everything from quick breakfast treats to elaborate dinner parties!",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    createdAt: "2024-01-01T00:00:00Z",
+  },
+  {
     id: "user-1",
     email: "chef.maria@example.com",
     name: "Chef Maria Rodriguez",
@@ -37,6 +48,49 @@ export const sampleUsers: User[] = [
 ];
 
 export const sampleRecipes: Recipe[] = [
+  {
+    id: "demo-recipe-1",
+    title: "Quick & Easy Avocado Toast",
+    description:
+      "A simple yet delicious breakfast that takes only 5 minutes to prepare. Perfect for busy mornings when you want something healthy and satisfying.",
+    ingredients: [
+      "2 slices of whole grain bread",
+      "1 ripe avocado",
+      "1 tbsp olive oil",
+      "1/2 lime, juiced",
+      "Salt and pepper to taste",
+      "Red pepper flakes (optional)",
+      "Cherry tomatoes, halved (optional)",
+      "Everything bagel seasoning (optional)",
+    ],
+    instructions: [
+      "Toast the bread slices until golden brown and crispy.",
+      "While bread is toasting, cut the avocado in half and remove the pit.",
+      "Scoop the avocado into a bowl and mash with a fork.",
+      "Add lime juice, olive oil, salt, and pepper to the mashed avocado. Mix well.",
+      "Spread the avocado mixture generously on the toasted bread.",
+      "Top with cherry tomatoes, red pepper flakes, and everything bagel seasoning if desired.",
+      "Serve immediately and enjoy!",
+    ],
+    cookTime: 3,
+    prepTime: 5,
+    servings: 2,
+    difficulty: "Easy" as const,
+    category: "Breakfast",
+    image:
+      "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500&h=300&fit=crop",
+    nutritionalInfo: {
+      calories: 285,
+      protein: 8,
+      carbs: 24,
+      fat: 18,
+    },
+    authorId: "demo-user",
+    createdAt: "2024-03-10T00:00:00Z",
+    updatedAt: "2024-03-10T00:00:00Z",
+    rating: 4.7,
+    totalRatings: 32,
+  },
   {
     id: "recipe-1",
     title: "Perfect Chocolate Chip Cookies",

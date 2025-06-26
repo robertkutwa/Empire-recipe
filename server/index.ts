@@ -4,6 +4,7 @@ import { handleDemo } from "./routes/demo";
 import {
   handleSignup,
   handleLogin,
+  handleDemoLogin,
   handleGetMe,
   handleLogout,
   authenticateUser,
@@ -43,6 +44,7 @@ export function createServer() {
   // Authentication routes
   app.post("/api/auth/signup", handleSignup);
   app.post("/api/auth/login", handleLogin);
+  app.post("/api/auth/demo-login", handleDemoLogin);
   app.get("/api/auth/me", handleGetMe);
   app.post("/api/auth/logout", handleLogout);
 
