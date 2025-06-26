@@ -162,8 +162,14 @@ export function RecipeCard({
           </Badge>
         </div>
 
+        <div className="pt-3 border-t">
+          <Button asChild className="w-full">
+            <Link to={`/recipes/${recipe.id}`}>View Recipe</Link>
+          </Button>
+        </div>
+
         {showAuthor && recipe.author && (
-          <div className="flex items-center space-x-2 pt-3 border-t">
+          <div className="flex items-center space-x-2 pt-3">
             <Avatar className="h-6 w-6">
               <AvatarImage
                 src={recipe.author.avatar}
