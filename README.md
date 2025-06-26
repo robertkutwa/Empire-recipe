@@ -1,6 +1,6 @@
 # RecipeShare - Recipe Sharing Application
 
-A modern, full-stack recipe sharing application built with React, TypeScript, and Express. Users can discover, share, and organize their favorite recipes with a beautiful, responsive interface and dark/light mode support.
+A modern, full-stack recipe sharing application built with React (JSX), JavaScript, and Express. Users can discover, share, and organize their favorite recipes with a beautiful, responsive interface and dark/light mode support.
 
 ## 🍳 Features
 
@@ -27,7 +27,7 @@ A modern, full-stack recipe sharing application built with React, TypeScript, an
 
 ### Frontend
 
-- **React 18** with TypeScript
+- **React 18** with JSX/JavaScript
 - **Vite** for fast development and building
 - **React Router 6** for client-side routing
 - **TailwindCSS** for styling
@@ -37,17 +37,17 @@ A modern, full-stack recipe sharing application built with React, TypeScript, an
 
 ### Backend
 
-- **Express.js** with TypeScript
+- **Express.js** with JavaScript (ES Modules)
 - **CORS** enabled for cross-origin requests
 - **RESTful API** design
 - **JWT-like authentication** (simplified for demo)
 
 ### Development
 
-- **TypeScript** throughout the stack
+- **JavaScript (ES6+)** throughout the stack
 - **ESLint** and **Prettier** for code quality
 - **Vite** development server with hot reload
-- **Shared types** between client and server
+- **Modular architecture** with clean separation
 
 ## 🏗️ Project Structure
 
