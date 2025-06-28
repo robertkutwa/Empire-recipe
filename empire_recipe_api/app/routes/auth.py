@@ -20,15 +20,16 @@ def login():
 def demo_login():
     # Logic for demo login
     # Create demo user session and return response
+    pass
 
 @auth_bp.route('/auth/me', methods=['GET'])
 def get_me():
-    # Logic to get current user information
-    # Return user data
+    pass  # TODO: implement this function
 
 @auth_bp.route('/auth/logout', methods=['POST'])
 def logout():
     # Logic for user logout
     # Invalidate user session and return response
+    pass
 
-# Note: Each route should include proper error handling and response formatting.
+# Note: Each route should include proper error handling and response formatting

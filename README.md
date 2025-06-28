@@ -237,3 +237,142 @@ This project is for demonstration purposes. Feel free to use it as a learning re
 ---
 
 **RecipeShare** - Share your culinary creativity with the world! 🍽️✨
+
+# Empire Recipe API
+
+A RESTful API for RecipeShare, built with Flask and Flask-SQLAlchemy. This backend powers a recipe sharing platform, supporting user authentication, recipe management, and more.
+
+---
+
+## Features
+
+- User signup, login, logout, and demo login
+- JWT-based authentication (stubbed, ready for implementation)
+- CRUD operations for recipes
+- User profile endpoints
+- Modular Flask blueprints
+- SQLite database (default, easy to switch)
+- CORS-ready for frontend integration
+
+---
+
+## Project Structure
+
+```
+empire_recipe_api/
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── models.py
+│   ├── utils.py
+│   └── routes/
+│       ├── auth.py
+│       ├── demo.py
+│       ├── recipes.py
+│       └── users.py
+├── run.py
+└── requirements.txt
+```
+
+---
+
+## Setup & Installation
+
+1. **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd empire_recipe_api
+    ```
+
+2. **Create and activate a virtual environment:**
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+3. **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Set environment variables (optional for development):**
+    ```bash
+    export FLASK_APP=run.py
+    export FLASK_ENV=development
+    ```
+
+5. **Initialize the database:**
+    ```bash
+    flask shell
+    >>> from app import db, create_app
+    >>> app = create_app()
+    >>> with app.app_context():
+    ...     db.create_all()
+    ... 
+    >>> exit()
+    ```
+
+6. **Run the API server:**
+    ```bash
+    flask run
+    ```
+    The API will be available at [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
+---
+
+## API Endpoints
+
+- **Root:** `GET /`  
+  Returns a welcome message.
+
+- **Auth:**  
+  - `POST /api/auth/signup`
+  - `POST /api/auth/login`
+  - `POST /api/auth/demo-login`
+  - `GET /api/auth/me`
+  - `POST /api/auth/logout`
+
+- **Recipes:**  
+  - `GET /api/recipes`
+  - `GET /api/recipes/<id>`
+  - `POST /api/recipes` (auth required)
+  - `PUT /api/recipes/<id>` (auth required)
+  - `DELETE /api/recipes/<id>` (auth required)
+
+- **Demo:**  
+  - `GET /api/demo`
+
+- **Users:**  
+  - `GET /api/users`
+  - `GET /api/users/<id>`
+
+---
+
+## Frontend Integration
+
+- Make sure your frontend uses the correct API base URL (e.g., `http://localhost:5000/api/`).
+- CORS is enabled for development.
+- For protected endpoints, send the JWT token in the `Authorization` header.
+
+---
+
+## Development Notes
+
+- Update `utils.py` to implement real JWT authentication.
+- Add more validation and error handling as needed.
+- To increase file watcher limits on Linux (for frontend tools like Vite), run:
+    ```bash
+    echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+    ```
+
+---
+
+## License
+
+MIT
+
+---
+
+## Author
+
+Kutwa & Contributors
