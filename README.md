@@ -1,6 +1,6 @@
 # RecipeShare - Recipe Sharing Application
 
-A modern, full-stack recipe sharing application built with React (JSX), JavaScript, and Express. Users can discover, share, and organize their favorite recipes with a beautiful, responsive interface and dark/light mode support.
+A modern, full-stack recipe sharing application built with React (JSX), JavaScript and Flask. Users can discover, share, and organize their favorite recipes with a beautiful, responsive interface and dark/light mode support.
 
 ## 🍳 Features
 
@@ -331,16 +331,6 @@ empire_recipe_api/
 
 ---
 
-## Development Notes
-
-- Update `utils.py` to implement real JWT authentication.
-- Add more validation and error handling as needed.
-- To increase file watcher limits on Linux (for frontend tools like Vite), run:
-    ```bash
-    echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-    ```
-
----
 
 ## License
 
@@ -350,4 +340,4 @@ MIT
 
 ## Author
 
-Kutwa & Contributors
+~Robert Kutwa~
