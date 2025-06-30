@@ -23,31 +23,6 @@ A modern, full-stack recipe sharing application built with React (JSX), JavaScri
 - **Recipe Stats**: Cook time, prep time, servings, and ratings
 - **Modern UI**: Beautiful interface with Radix UI components and Tailwind CSS
 
-## 🚀 Tech Stack
-
-### Frontend
-
-- **React 18** with JSX/JavaScript
-- **Vite** for fast development and building
-- **React Router 6** for client-side routing
-- **TailwindCSS** for styling
-- **Radix UI** for accessible components
-- **Lucide React** for icons
-- **React Query** for data fetching
-
-### Backend
-
-- **Express.js** with JavaScript (ES Modules)
-- **CORS** enabled for cross-origin requests
-- **RESTful API** design
-- **JWT-like authentication** (simplified for demo)
-
-### Development
-
-- **JavaScript (ES6+)** throughout the stack
-- **ESLint** and **Prettier** for code quality
-- **Vite** development server with hot reload
-- **Modular architecture** with clean separation
 
 ## 🏗️ Project Structure
 
